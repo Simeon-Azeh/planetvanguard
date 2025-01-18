@@ -15,7 +15,7 @@ import {
     FaGithub 
   } from 'react-icons/fa';
 import ImageLoader from "./imageLoader";
-import {db} from "../firebaseConfig";
+import { db } from "../../../firebaseConfig";
 import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
 
 const FloatingElement = ({ className }) => (
@@ -23,52 +23,53 @@ const FloatingElement = ({ className }) => (
 );
 
 export default function ComingSoon() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '' });
+  const [message, setMessage] = useState({ type: '', text: '' });
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [formData, setFormData] = useState({ name: '', email: '' });
-    const [message, setMessage] = useState({ type: '', text: '' });
-  
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsLoading(true);
-        setMessage({ type: '', text: '' });
-    
-        try {
-          // Check if email already exists
-          const subscriptionsRef = collection(db, 'subscriptions');
-          const q = query(subscriptionsRef, where('email', '==', formData.email.toLowerCase()));
-          const querySnapshot = await getDocs(q);
-    
-          if (!querySnapshot.empty) {
-            setMessage({ 
-              type: 'error', 
-              text: 'This email is already subscribed!' 
-            });
-            return;
-          }
-    
-          // Add new subscription
-          await addDoc(subscriptionsRef, {
-            name: formData.name,
-            email: formData.email.toLowerCase(),
-            createdAt: new Date().toISOString(),
-          });
-    
-          setMessage({ 
-            type: 'success', 
-            text: 'Thank you for joining! We\'ll keep you updated.' 
-          });
-          setFormData({ name: '', email: '' });
-        } catch (error) {
-            console.error('Error:', error);
-            setMessage({ 
-              type: 'error', 
-              text: 'Something went wrong. Please try again later.' 
-            });
-          } finally {
-            setIsLoading(false);
-          }
-        };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setMessage({ type: '', text: '' });
+
+    try {
+      // Check if email already exists
+      const subscriptionsRef = collection(db, 'subscriptions');
+      const q = query(subscriptionsRef, where('email', '==', formData.email.toLowerCase()));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        setMessage({ 
+          type: 'error', 
+          text: 'This email is already subscribed!' 
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      // Add new subscription
+      await addDoc(subscriptionsRef, {
+        name: formData.name,
+        email: formData.email.toLowerCase(),
+        createdAt: new Date().toISOString(),
+      });
+
+      setMessage({ 
+        type: 'success', 
+        text: 'Thank you for joining! We\'ll keep you updated.' 
+      });
+      setFormData({ name: '', email: '' });
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage({ 
+        type: 'error', 
+        text: 'Something went wrong. Please try again later.' 
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <>
       <ImageLoader />
