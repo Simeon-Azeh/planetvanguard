@@ -26,14 +26,13 @@ export default function ComingSoon() {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '' });
   const [message, setMessage] = useState({ type: '', text: '' });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setMessage({ type: '', text: '' });
 
     try {
-      // Check if email already exists
+      // Check if email exists
       const subscriptionsRef = collection(db, 'subscriptions');
       const q = query(subscriptionsRef, where('email', '==', formData.email.toLowerCase()));
       const querySnapshot = await getDocs(q);
@@ -43,7 +42,6 @@ export default function ComingSoon() {
           type: 'error', 
           text: 'This email is already subscribed!' 
         });
-        setIsLoading(false);
         return;
       }
 
@@ -68,7 +66,7 @@ export default function ComingSoon() {
     } finally {
       setIsLoading(false);
     }
-  };
+};
 
   return (
     <>
