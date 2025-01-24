@@ -10,10 +10,10 @@ import {
 import { useEffect, useState } from 'react';
 import { 
     FaInstagram, 
-    FaTwitter, 
+    FaXTwitter, 
     FaLinkedin, 
-    FaGithub 
-  } from 'react-icons/fa';
+    FaYoutube 
+  } from 'react-icons/fa6';
 import ImageLoader from "./imageLoader";
 import { db } from "../../../firebaseConfig";
 import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
@@ -198,7 +198,7 @@ export default function ComingSoon() {
             />
             <SocialIcon 
               href="https://twitter.com" 
-              Icon={FaTwitter} 
+              Icon={FaXTwitter} 
               label="Follow us on Twitter"
             />
             <SocialIcon 
@@ -208,7 +208,7 @@ export default function ComingSoon() {
             />
             <SocialIcon 
               href="https://github.com" 
-              Icon={FaGithub} 
+              Icon={FaYoutube} 
               label="View on GitHub"
             />
           </div>
