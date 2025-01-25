@@ -18,7 +18,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [mobileView, setMobileView] = useState('main'); // 'main' or 'projects'
+  const [mobileView, setMobileView] = useState('main');
   const dropdownRef = useRef(null);
 
   useScrollLock(isOpen);
@@ -181,13 +181,15 @@ export default function Header() {
               className="md:hidden relative z-[60] w-10 h-10 flex items-center justify-center"
               aria-label="Toggle menu"
             >
-              {isOpen ? (
-                <XMarkIcon className="h-6 w-6 text-emerald-500" />
-              ) : (
-                <Bars3Icon className={`h-6 w-6 transition-colors duration-300 ${
-                  scrolled ? 'text-gray-600 dark:text-gray-300' : 'text-gray-700 dark:text-gray-200'
-                }`} />
-              )}
+              <div className={`w-6 transform transition-all duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                {isOpen ? (
+                  <XMarkIcon className="h-6 w-6 text-emerald-500" />
+                ) : (
+                  <Bars3Icon className={`h-6 w-6 transition-colors duration-300 ${
+                    scrolled ? 'text-gray-600 dark:text-gray-300' : 'text-gray-700 dark:text-gray-200'
+                  }`} />
+                )}
+              </div>
             </button>
           </div>
         </nav>
@@ -197,6 +199,17 @@ export default function Header() {
       <div className={`fixed inset-0 z-[55] bg-white/95 dark:bg-black/95 backdrop-blur-lg 
         transition-all duration-500 ease-in-out flex items-center justify-center md:hidden
         ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full pointer-events-none'}`}>
+           <button 
+          onClick={closeMobileMenu}
+          className="absolute top-4 right-4 p-2 rounded-full 
+            bg-emerald-100 dark:bg-emerald-900/50
+            hover:bg-emerald-200 dark:hover:bg-emerald-800/50
+            transition-all duration-300
+            transform hover:scale-110 hover:rotate-180"
+          aria-label="Close menu"
+        >
+          <XMarkIcon className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+        </button>
         <div className="flex flex-col items-center justify-center space-y-8 w-full px-8">
           {mobileView === 'main' ? (
             // Main Navigation View
@@ -212,7 +225,7 @@ export default function Header() {
                         flex items-center gap-2"
                     >
                       {item.name}
-                      <ChevronRightIcon className="w-6 h-6" />
+                      <ChevronRightIcon className="w-6 h-6 transition-transform group-hover:translate-x-1" />
                     </button>
                   ) : (
                     <Link
@@ -257,7 +270,9 @@ export default function Header() {
             <div className="w-full animate-in slide-in-from-right-2 duration-300">
               <button
                 onClick={() => setMobileView('main')}
-                className="mb-8 flex items-center gap-2 text-emerald-600 dark:text-emerald-400"
+                className="mb-8 flex items-center gap-2 
+                  text-emerald-600 dark:text-emerald-400
+                  transition-all duration-300 transform hover:translate-x-1"
               >
                 <ChevronLeftIcon className="w-6 h-6" />
                 <span>Back to Menu</span>
@@ -269,7 +284,7 @@ export default function Header() {
                     href={item.href}
                     className="block text-2xl text-gray-800 dark:text-gray-200
                       hover:text-emerald-600 dark:hover:text-emerald-400
-                      transition-all duration-300"
+                      transition-all duration-300 transform hover:translate-x-2"
                     onClick={closeMobileMenu}
                   >
                     {item.name}
