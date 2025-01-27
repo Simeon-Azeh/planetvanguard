@@ -57,18 +57,10 @@ export default function Header() {
       setScrollProgress((scrollY / height) * 100);
     };
 
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setActiveDropdown(null);
-      }
-    };
-
     window.addEventListener('scroll', handleScroll);
-    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -107,22 +99,37 @@ export default function Header() {
             <div className="hidden md:flex items-center space-x-4">
               {navItems.map(item => (
                 <div key={item.name} className="relative" ref={dropdownRef}>
-                  <button
-                    className={`px-4 py-2 rounded-lg transition-all duration-300 relative group 
-                      inline-flex items-center ${
-                      scrolled 
-                        ? 'text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400' 
-                        : 'text-gray-700 hover:text-emerald-500 dark:text-gray-200 dark:hover:text-emerald-300'
-                    }`}
-                    onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                  >
-                    {item.name}
-                    {item.dropdownItems && (
+                  {item.dropdownItems ? (
+                    // Dropdown Button
+                    <button
+                      className={`px-4 py-2 rounded-lg transition-all duration-300 relative group 
+                        inline-flex items-center ${
+                        scrolled 
+                          ? 'text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400' 
+                          : 'text-gray-700 hover:text-emerald-500 dark:text-gray-200 dark:hover:text-emerald-300'
+                      }`}
+                      onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                    >
+                      {item.name}
                       <ChevronDownIcon className={`ml-1 w-4 h-4 transition-transform duration-300 
                         ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
-                    )}
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-emerald-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
-                  </button>
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-emerald-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+                    </button>
+                  ) : (
+                    // Regular Navigation Link
+                    <Link
+                      href={item.href}
+                      className={`px-4 py-2 rounded-lg transition-all duration-300 relative group 
+                        inline-flex items-center ${
+                        scrolled 
+                          ? 'text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400' 
+                          : 'text-gray-700 hover:text-emerald-500 dark:text-gray-200 dark:hover:text-emerald-300'
+                      }`}
+                    >
+                      {item.name}
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-emerald-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+                    </Link>
+                  )}
 
                   {/* Dropdown Menu */}
                   {item.dropdownItems && activeDropdown === item.name && (
@@ -140,7 +147,6 @@ export default function Header() {
                             hover:bg-emerald-50 dark:hover:bg-emerald-900/50
                             hover:text-emerald-600 dark:hover:text-emerald-400
                             transition-all duration-300"
-                          onClick={() => setActiveDropdown(null)}
                         >
                           {dropdownItem.name}
                         </Link>
@@ -199,7 +205,7 @@ export default function Header() {
       <div className={`fixed inset-0 z-[55] bg-white/95 dark:bg-black/95 backdrop-blur-lg 
         transition-all duration-500 ease-in-out flex items-center justify-center md:hidden
         ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full pointer-events-none'}`}>
-           <button 
+        <button 
           onClick={closeMobileMenu}
           className="absolute top-4 right-4 p-2 rounded-full 
             bg-emerald-100 dark:bg-emerald-900/50
