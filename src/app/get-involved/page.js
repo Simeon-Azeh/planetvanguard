@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/header'
 import GetInvolved from '../components/GetInvoled'
 import Donations from '../components/Donations'
+import Footer from '../components/footer'
 
 function GetInvolvedPage() {
   return (
@@ -14,6 +15,7 @@ function GetInvolvedPage() {
         <GetInvolved />
         </div>    
       <Donations />
+      <Footer />
     </div>
   )
 }

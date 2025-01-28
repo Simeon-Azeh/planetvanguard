@@ -19,7 +19,7 @@ const PAYMENT_METHODS = {
   CARD: 'Credit/Debit Card'
 };
 
-const PaymentModal = ({ isOpen, onClose, amount, selectedTier }) => {
+const PaymentModal = ({ isOpen, onClose, amount, setAmount, selectedTier, project }) => {
   const [paymentMethod, setPaymentMethod] = useState(PAYMENT_METHODS.MOBILE_MONEY);
   const [currency, setCurrency] = useState('USD');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -56,11 +56,21 @@ const PaymentModal = ({ isOpen, onClose, amount, selectedTier }) => {
         </div>
 
         <div className="text-center mb-6">
+          <label className="block text-sm font-medium mb-2">Amount</label>
+          <input
+            type="number"
+            value={amount}
+            onChange={(e) => setAmount(Number(e.target.value))}
+            className="w-full p-3 rounded-lg border border-gray-200 dark:border-gray-700 mb-2"
+          />
           <span className="text-2xl font-bold">
             {CURRENCIES[currency].symbol}{convertedAmount}
           </span>
           {selectedTier && (
             <p className="text-sm text-gray-500">{selectedTier} Package</p>
+          )}
+          {project && (
+            <p className="text-sm text-gray-500">{project.title}</p>
           )}
         </div>
 
@@ -158,34 +168,67 @@ const DonationTier = ({ amount, title, perks, onClick }) => (
   </div>
 );
 
-const ProjectCard = ({ title, goal, raised, image }) => (
-  <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl overflow-hidden">
-    <div className="h-48 bg-gray-200 relative">
-      <img src={image} alt={title} className="w-full h-full object-cover" />
-    </div>
-    <div className="p-6">
-      <h3 className="font-bold mb-2">{title}</h3>
-      <div className="space-y-2">
-        <div className="h-2 bg-gray-200 rounded-full">
-          <div 
-            className="h-full bg-emerald-500 rounded-full"
-            style={{ width: `${(raised/goal)*100}%` }}
-          />
+const ProjectCard = ({ title, goal, raised, image, onClick }) => {
+  const percentageRaised = Math.round((raised/goal)*100);
+  
+  return (
+    <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl overflow-hidden
+      border border-gray-100 dark:border-gray-700
+      transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+      <div className="h-48 bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+        <img 
+          src={image} 
+          alt={title} 
+          className="w-full h-full object-cover transition-transform duration-500
+            hover:scale-110" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+      </div>
+      
+      <div className="p-6 space-y-4">
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white">{title}</h3>
+        
+        <div className="space-y-3">
+          <div className="flex justify-between text-sm mb-1">
+            <span className="text-gray-600 dark:text-gray-300">
+              RWF {raised.toLocaleString()} raised
+            </span>
+            <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+              {percentageRaised}%
+            </span>
+          </div>
+          
+          <div className="h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-emerald-500 rounded-full transition-all duration-500
+                shadow-[0_0_10px_rgba(16,185,129,0.3)]"
+              style={{ width: `${percentageRaised}%` }}
+            />
+          </div>
+          
+          <div className="text-sm text-gray-500 dark:text-gray-400">
+            Goal: RWF {goal.toLocaleString()}
+          </div>
         </div>
-        <div className="flex justify-between text-sm">
-          <span>${raised.toLocaleString()} raised</span>
-          <span>Goal: ${goal.toLocaleString()}</span>
-        </div>
+
+        <button 
+          onClick={onClick}
+          className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 
+            text-white py-2.5 px-4 rounded-lg transition-colors duration-300
+            focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
+          Support This Project
+        </button>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function Donations() {
   const [customAmount, setCustomAmount] = useState('');
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [selectedTier, setSelectedTier] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const tiers = [
     {
@@ -208,14 +251,14 @@ export default function Donations() {
   const projects = [
     {
       title: "Reforestation Project",
-      goal: 50000,
-      raised: 35000,
+      goal: 500000,
+      raised: 352000,
       image: "/project1.jpg"
     },
     {
       title: "Clean Water Initiative",
-      goal: 30000,
-      raised: 15000,
+      goal: 300000,
+      raised: 150000,
       image: "/project2.jpg"
     }
   ];
@@ -269,7 +312,16 @@ export default function Donations() {
       <h2 className="text-2xl font-bold mb-6">Current Campaigns</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project, index) => (
-          <ProjectCard key={index} {...project} />
+          <ProjectCard 
+            key={index} 
+            {...project} 
+            onClick={() => {
+              setSelectedProject(project);
+              setSelectedAmount(project.raised);
+              setSelectedTier(null);
+              setIsPaymentModalOpen(true);
+            }}
+          />
         ))}
       </div>
 
@@ -277,7 +329,9 @@ export default function Donations() {
         isOpen={isPaymentModalOpen}
         onClose={() => setIsPaymentModalOpen(false)}
         amount={selectedAmount}
+        setAmount={setSelectedAmount}
         selectedTier={selectedTier}
+        project={selectedProject}
       />
     </div>
   );
