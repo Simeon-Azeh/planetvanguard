@@ -158,7 +158,7 @@ export default function Header() {
 
               {/* Action Buttons */}
               <Link 
-                href="/donate"
+                href="/get-involved"
                 className="ml-4 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 
                   text-white rounded-lg transition-all duration-300 transform hover:scale-105
                   shadow-[0_0_15px_rgba(16,185,129,0.2)]
@@ -247,7 +247,7 @@ export default function Header() {
                 </div>
               ))}
               <Link 
-                href="/donate"
+                href="/get-involved"
                 className="w-full px-8 py-4 bg-emerald-600 hover:bg-emerald-700 
                   text-white rounded-lg transition-all duration-300 transform hover:scale-105
                   shadow-[0_0_15px_rgba(16,185,129,0.2)]

@@ -408,3 +408,14 @@ body {
   background-size: 200% auto;
   animation: gradient-x 15s ease infinite;
 }
+
+@layer utilities {
+  .bg-grid-gray-200 {
+    background-image: linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  }
+  .bg-grid-gray-700 {
+    background-image: linear-gradient(to right, #374151 1px, transparent 1px),
+      linear-gradient(to bottom, #374151 1px, transparent 1px);
+  }
+}
