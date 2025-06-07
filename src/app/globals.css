@@ -221,10 +221,7 @@ body {
   animation: combined 2s ease-out forwards;
 }
 
-@keyframes pulse-slow {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
-}
+
 
 .animate-pulse-slow {
   animation: pulse-slow 2s ease-in-out infinite;
@@ -345,10 +342,11 @@ body {
 }
 
 .react-calendar__navigation button {
-  @apply text-gray-700 dark:text-gray-200 
-    hover:bg-emerald-50 dark:hover:bg-emerald-900/50
-    rounded-lg transition-all duration-300
-    min-w-[44px] p-2 text-lg font-medium;
+  @apply text-gray-700 dark:text-gray-200 ;
+  @apply bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600;
+  @apply rounded-lg border-0 transition-colors duration-200;
+  @apply px-3 py-2;
+  @apply focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2;
 }
 
 .react-calendar__navigation button:disabled {
@@ -364,10 +362,10 @@ body {
 }
 
 .react-calendar__tile {
-  @apply aspect-square flex items-center justify-center rounded-lg
-    text-gray-700 dark:text-gray-200
-    hover:bg-emerald-50 dark:hover:bg-emerald-900/50
-    transition-all duration-300 relative;
+  @apply aspect-square flex items-center justify-center rounded-lg;
+  @apply text-gray-700 dark:text-gray-200 font-medium text-lg;
+  @apply hover:bg-emerald-50 dark:hover:bg-emerald-900/50;
+  position: relative;
 }
 
 .react-calendar__tile--now {
@@ -384,8 +382,8 @@ body {
 
 .react-calendar__tile--event::after {
   content: '';
-  @apply absolute bottom-1 w-1.5 h-1.5 rounded-full
-    bg-emerald-500 dark:bg-emerald-400;
+  @apply absolute bottom-1 w-1.5 h-1.5 rounded-full;
+  background-color: var(--chart-1);
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {
