@@ -2,8 +2,8 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  Bars3Icon, 
+import {
+  Bars3Icon,
   XMarkIcon,
   HeartIcon,
   HandRaisedIcon,
@@ -24,16 +24,16 @@ export default function Header() {
   useScrollLock(isOpen);
 
   const navItems = [
-    { 
-      name: 'Home', 
-      href: '/' 
+    {
+      name: 'Home',
+      href: '/'
     },
-    { 
-      name: 'About', 
-      href: '/about' 
+    {
+      name: 'About',
+      href: '/about'
     },
-    { 
-      name: 'Projects', 
+    {
+      name: 'Projects',
       href: '/projects',
       dropdownItems: [
         { name: 'Events', href: '/events' },
@@ -43,9 +43,9 @@ export default function Header() {
         { name: 'Media', href: '/media' }
       ]
     },
-    { 
-      name: 'Contact', 
-      href: '/contact' 
+    {
+      name: 'Contact',
+      href: '/contact'
     },
   ];
 
@@ -71,14 +71,13 @@ export default function Header() {
 
   return (
     <>
-      <header className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/80 dark:bg-black/80 backdrop-blur-lg' 
-          : 'bg-transparent'
-      }`}>
+      <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled
+        ? 'bg-white/80 dark:bg-black/80 backdrop-blur-lg'
+        : 'bg-transparent'
+        }`}>
         <div className="h-1 bg-gradient-to-r from-emerald-500 to-teal-500"
           style={{ width: `${scrollProgress}%` }} />
-        
+
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -86,11 +85,10 @@ export default function Header() {
               <div className="relative w-10 h-10 transform transition-all duration-300 group-hover:scale-110">
                 <Image src="/logo.svg" alt="Logo" fill className="object-contain" />
               </div>
-              <span className={`text-xl font-bold transition-colors duration-300 ${
-                scrolled 
-                  ? 'text-emerald-800 dark:text-emerald-400' 
-                  : 'text-emerald-700 dark:text-emerald-300'
-              }`}>
+              <span className={`text-xl font-bold transition-colors duration-300 ${scrolled
+                ? 'text-emerald-800 dark:text-emerald-400'
+                : 'text-emerald-700 dark:text-emerald-300'
+                }`}>
                 Planet Vanguard
               </span>
             </Link>
@@ -103,11 +101,10 @@ export default function Header() {
                     // Dropdown Button
                     <button
                       className={`px-4 py-2 rounded-lg transition-all duration-300 relative group 
-                        inline-flex items-center ${
-                        scrolled 
-                          ? 'text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400' 
+                        inline-flex items-center ${scrolled
+                          ? 'text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400'
                           : 'text-gray-700 hover:text-emerald-500 dark:text-gray-200 dark:hover:text-emerald-300'
-                      }`}
+                        }`}
                       onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                     >
                       {item.name}
@@ -120,11 +117,10 @@ export default function Header() {
                     <Link
                       href={item.href}
                       className={`px-4 py-2 rounded-lg transition-all duration-300 relative group 
-                        inline-flex items-center ${
-                        scrolled 
-                          ? 'text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400' 
+                        inline-flex items-center ${scrolled
+                          ? 'text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400'
                           : 'text-gray-700 hover:text-emerald-500 dark:text-gray-200 dark:hover:text-emerald-300'
-                      }`}
+                        }`}
                     >
                       {item.name}
                       <span className="absolute bottom-0 left-0 w-full h-0.5 bg-emerald-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
@@ -134,10 +130,10 @@ export default function Header() {
                   {/* Dropdown Menu */}
                   {item.dropdownItems && activeDropdown === item.name && (
                     <div className="absolute top-full left-0 mt-2 w-48 rounded-xl 
-                      bg-white dark:bg-black 
-                      border border-emerald-100 dark:border-emerald-800
-                      shadow-lg overflow-hidden
-                      animate-in fade-in slide-in-from-top-2 duration-200"
+                                          bg-white dark:bg-black 
+                                          border border-emerald-100 border-solid dark:border-emerald-800
+                                          shadow-lg overflow-hidden
+                                          animate-in fade-in slide-in-from-top-2 duration-200 "
                     >
                       {item.dropdownItems.map(dropdownItem => (
                         <Link
@@ -157,7 +153,7 @@ export default function Header() {
               ))}
 
               {/* Action Buttons */}
-              <Link 
+              <Link
                 href="/get-involved"
                 className="ml-4 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 
                   text-white rounded-lg transition-all duration-300 transform hover:scale-105
@@ -168,21 +164,21 @@ export default function Header() {
                 <HeartIcon className="w-5 h-5 transition-transform group-hover:scale-110" />
                 <span>Donate</span>
               </Link>
-              <Link 
+              <Link
                 href="/volunteer"
-                className="ml-2 px-4 py-2 border-2 border-emerald-600 
-                  text-emerald-600 dark:text-emerald-400 
-                  hover:bg-emerald-50 dark:hover:bg-emerald-950/50 
-                  rounded-lg transition-all duration-300 transform hover:scale-105
-                  flex items-center gap-2"
+                className="ml-2 px-4 py-2 border-2 border-emerald-600 border-solid 
+                                  text-emerald-600 dark:text-emerald-400 
+                                  hover:bg-emerald-50 dark:hover:bg-emerald-950/50 
+                                  rounded-lg transition-all duration-300 transform hover:scale-105
+                                  flex items-center gap-2"
               >
                 <HandRaisedIcon className="w-5 h-5 transition-transform group-hover:scale-110" />
-                <span>Volunteer</span>
+                <span>Get Involved</span>
               </Link>
             </div>
 
             {/* Mobile Menu Button */}
-            <button 
+            <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden relative z-[60] w-10 h-10 flex items-center justify-center"
               aria-label="Toggle menu"
@@ -191,9 +187,8 @@ export default function Header() {
                 {isOpen ? (
                   <XMarkIcon className="h-6 w-6 text-emerald-500" />
                 ) : (
-                  <Bars3Icon className={`h-6 w-6 transition-colors duration-300 ${
-                    scrolled ? 'text-gray-600 dark:text-gray-300' : 'text-gray-700 dark:text-gray-200'
-                  }`} />
+                  <Bars3Icon className={`h-6 w-6 transition-colors duration-300 ${scrolled ? 'text-gray-600 dark:text-gray-300' : 'text-gray-700 dark:text-gray-200'
+                    }`} />
                 )}
               </div>
             </button>
@@ -205,7 +200,7 @@ export default function Header() {
       <div className={`fixed inset-0 z-[55] bg-white/95 dark:bg-black/95 backdrop-blur-lg 
         transition-all duration-500 ease-in-out flex items-center justify-center md:hidden
         ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full pointer-events-none'}`}>
-        <button 
+        <button
           onClick={closeMobileMenu}
           className="absolute top-4 right-4 p-2 rounded-full 
             bg-emerald-100 dark:bg-emerald-900/50
@@ -246,7 +241,7 @@ export default function Header() {
                   )}
                 </div>
               ))}
-              <Link 
+              <Link
                 href="/get-involved"
                 className="w-full px-8 py-4 bg-emerald-600 hover:bg-emerald-700 
                   text-white rounded-lg transition-all duration-300 transform hover:scale-105
@@ -258,17 +253,17 @@ export default function Header() {
                 <HeartIcon className="w-6 h-6" />
                 <span>Donate</span>
               </Link>
-              <Link 
+              <Link
                 href="/volunteer"
-                className="w-full px-8 py-4 border-2 border-emerald-600 
-                  text-emerald-600 dark:text-emerald-400 
-                  hover:bg-emerald-50 dark:hover:bg-emerald-950/50 
-                  rounded-lg transition-all duration-300 transform hover:scale-105
-                  flex items-center justify-center gap-2"
+                className="w-full px-8 py-4 border-2 border-emerald-600 border-solid 
+                                  text-emerald-600 dark:text-emerald-400 
+                                  hover:bg-emerald-50 dark:hover:bg-emerald-950/50 
+                                  rounded-lg transition-all duration-300 transform hover:scale-105
+                                  flex items-center justify-center gap-2"
                 onClick={closeMobileMenu}
               >
                 <HandRaisedIcon className="w-6 h-6" />
-                <span>Volunteer</span>
+                <span>Get Involved</span>
               </Link>
             </>
           ) : (

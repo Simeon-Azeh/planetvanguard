@@ -84,7 +84,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-4">
               {[
-                { icon: PhoneIcon, text: '+234 123 456 7890' },
+                { icon: PhoneIcon, text: '+250 783 296 593' },
                 { icon: EnvelopeIcon, text: 'info@planetvanguard.org' },
                 { icon: MapPinIcon, text: 'Kigali, Rwanda' }
               ].map((item, index) => (

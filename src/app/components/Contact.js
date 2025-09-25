@@ -11,7 +11,7 @@ const contactMethods = [
   {
     icon: PhoneIcon,
     title: 'Call Us',
-    value: '+250 788 123 456',
+    value: '+250 783 296 593',
     subtitle: 'Mon-Fri from 8am to 5pm'
   },
   {

@@ -7,6 +7,7 @@ import Header from './components/header';
 import Hero from './components/hero';
 import Initiatives from './components/Initiatives';
 import SuccessStories from './components/SuccessStories';
+import Newsletter from './components/Newsletter';
 
 
 function Home() {
@@ -23,6 +24,9 @@ function Home() {
          <AnimateOnScroll>
            <SuccessStories />
          </AnimateOnScroll>
+              <AnimateOnScroll>
+                 <Newsletter />
+               </AnimateOnScroll>
          <AnimateOnScroll>
            <CTA />
          </AnimateOnScroll>
