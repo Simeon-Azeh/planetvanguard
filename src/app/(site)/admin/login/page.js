@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '@/lib/firebase'; // Adjust path to your Firebase config
+import { auth } from '../../../../../firebaseConfig';
 import { EyeIcon, EyeSlashIcon, XCircleIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
 export default function AdminLogin() {
@@ -37,9 +37,11 @@ export default function AdminLogin() {
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            // Check if user is an admin (you might want to check a custom claim or a specific field in Firestore)
-            // For example: const idTokenResult = await userCredential.user.getIdTokenResult();
-            // if (!idTokenResult.claims.admin) throw new Error('Unauthorized access');
+            
+            // Check if user email ends with @planetvanguard.org
+            if (!userCredential.user.email.endsWith('@planetvanguard.org')) {
+                throw new Error('Unauthorized access: Invalid domain');
+            }
 
             if (rememberMe) {
                 // Firebase handles persistence by default, but you can set a longer session if needed
@@ -52,18 +54,22 @@ export default function AdminLogin() {
             router.push('/admin/dashboard');
         } catch (error) {
             console.error(error);
-            switch (error.code) {
-                case 'auth/invalid-credential':
-                    setError('Invalid email or password.');
-                    break;
-                case 'auth/user-disabled':
-                    setError('This account has been disabled.');
-                    break;
-                case 'auth/too-many-requests':
-                    setError('Too many failed login attempts. Please try again later.');
-                    break;
-                default:
-                    setError('Failed to log in. Please try again.');
+            if (error.message === 'Unauthorized access: Invalid domain') {
+                setError('Access denied. Only Planet Vanguard organization emails are allowed.');
+            } else {
+                switch (error.code) {
+                    case 'auth/invalid-credential':
+                        setError('Invalid email or password.');
+                        break;
+                    case 'auth/user-disabled':
+                        setError('This account has been disabled.');
+                        break;
+                    case 'auth/too-many-requests':
+                        setError('Too many failed login attempts. Please try again later.');
+                        break;
+                    default:
+                        setError('Failed to log in. Please try again.');
+                }
             }
         } finally {
             setIsLoading(false);
@@ -108,7 +114,7 @@ export default function AdminLogin() {
                 <div className="text-center mb-8">
                     <div className="flex justify-center mb-4">
                         <Image
-                            src="/logo.png"
+                            src="/logo.svg"
                             alt="Planet Vanguard"
                             width={60}
                             height={60}
