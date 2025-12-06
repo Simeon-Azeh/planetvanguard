@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '../../../../../firebaseConfig';
+import { auth } from '@/firebaseConfig';
 import { EyeIcon, EyeSlashIcon, XCircleIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
 export default function AdminLogin() {
@@ -37,7 +37,7 @@ export default function AdminLogin() {
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            
+
             // Check if user email ends with @planetvanguard.org
             if (!userCredential.user.email.endsWith('@planetvanguard.org')) {
                 throw new Error('Unauthorized access: Invalid domain');

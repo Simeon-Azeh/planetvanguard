@@ -1,21 +1,21 @@
 "use client"
 import Image from "next/image";
-import { 
-  GlobeAltIcon, 
-  HandRaisedIcon, 
+import {
+  GlobeAltIcon,
+  HandRaisedIcon,
   SparklesIcon,
   ArrowPathIcon,
   CameraIcon // Use CameraIcon as a placeholder for Instagram
 } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
-import { 
-    FaInstagram, 
-    FaXTwitter, 
-    FaLinkedin, 
-    FaYoutube 
-  } from 'react-icons/fa6';
+import {
+  FaInstagram,
+  FaXTwitter,
+  FaLinkedin,
+  FaYoutube
+} from 'react-icons/fa6';
 import ImageLoader from "./imageLoader";
-import { db } from "../../../firebaseConfig";
+import { db } from "@/firebaseConfig";
 import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
 
 const FloatingElement = ({ className }) => (
@@ -38,9 +38,9 @@ export default function ComingSoon() {
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {
-        setMessage({ 
-          type: 'error', 
-          text: 'This email is already subscribed!' 
+        setMessage({
+          type: 'error',
+          text: 'This email is already subscribed!'
         });
         return;
       }
@@ -52,21 +52,21 @@ export default function ComingSoon() {
         createdAt: new Date().toISOString(),
       });
 
-      setMessage({ 
-        type: 'success', 
-        text: 'Thank you for joining! We\'ll keep you updated.' 
+      setMessage({
+        type: 'success',
+        text: 'Thank you for joining! We\'ll keep you updated.'
       });
       setFormData({ name: '', email: '' });
     } catch (error) {
       console.error('Error:', error);
-      setMessage({ 
-        type: 'error', 
-        text: 'Something went wrong. Please try again later.' 
+      setMessage({
+        type: 'error',
+        text: 'Something went wrong. Please try again later.'
       });
     } finally {
       setIsLoading(false);
     }
-};
+  };
 
   return (
     <>
@@ -76,9 +76,9 @@ export default function ComingSoon() {
         <div className="absolute inset-0 bg-grid-lines opacity-[0.1] dark:opacity-[0.1]" />
         <FloatingElement className="bg-emerald-300/30 w-72 h-72 -left-20 top-20" />
         <FloatingElement className="bg-teal-300/30 w-64 h-64 left-40 bottom-20" />
-        
+
         <main className="relative max-w-5xl mx-auto px-4 py-16 flex flex-col items-center gap-12 text-center">
-          
+
           <h1 className="text-2xl md:text-4xl font-bold text-emerald-800 dark:text-emerald-400 tracking-tight">
             Planet Vanguard - Empowering African Youths for Climate Action
           </h1>
@@ -88,17 +88,17 @@ export default function ComingSoon() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 w-full max-w-4xl mt-8">
-            <FeatureCard 
+            <FeatureCard
               icon={<GlobeAltIcon className="w-8 h-8 group-hover:scale-110 transition-transform" />}
               title="Global Impact"
               description="Working across borders for climate solutions"
             />
-            <FeatureCard 
+            <FeatureCard
               icon={<SparklesIcon className="w-8 h-8 group-hover:scale-110 transition-transform" />}
               title="Innovation"
               description="Leveraging technology for sustainability"
             />
-            <FeatureCard 
+            <FeatureCard
               icon={<HandRaisedIcon className="w-8 h-8 group-hover:scale-110 transition-transform" />}
               title="Action"
               description="Taking steps toward a greener future"
@@ -107,7 +107,7 @@ export default function ComingSoon() {
 
           <div className="flex flex-col md:flex-row items-center gap-8 mt-8 w-full max-w-4xl">
             <div className="flex-1">
-              <form 
+              <form
                 onSubmit={handleSubmit}
                 className="bg-white dark:bg-black/80 p-8 rounded-2xl shadow-lg animate-fade-in-up relative overflow-hidden"
               >
@@ -189,26 +189,26 @@ export default function ComingSoon() {
               />
             </div>
           </div>
-       
+
           <div className="flex justify-center gap-6 mt-12">
-            <SocialIcon 
-              href="https://instagram.com" 
-              Icon={FaInstagram} 
+            <SocialIcon
+              href="https://instagram.com"
+              Icon={FaInstagram}
               label="Follow us on Instagram"
             />
-            <SocialIcon 
-              href="https://twitter.com" 
-              Icon={FaXTwitter} 
+            <SocialIcon
+              href="https://twitter.com"
+              Icon={FaXTwitter}
               label="Follow us on Twitter"
             />
-            <SocialIcon 
-              href="https://linkedin.com" 
-              Icon={FaLinkedin} 
+            <SocialIcon
+              href="https://linkedin.com"
+              Icon={FaLinkedin}
               label="Connect on LinkedIn"
             />
-            <SocialIcon 
-              href="https://github.com" 
-              Icon={FaYoutube} 
+            <SocialIcon
+              href="https://github.com"
+              Icon={FaYoutube}
               label="View on GitHub"
             />
           </div>
@@ -228,7 +228,7 @@ const FeatureCard = ({ icon, title, description }) => (
 );
 
 const SocialIcon = ({ href, Icon, label }) => (
-  <a 
+  <a
     href={href}
     aria-label={label}
     className="group p-4 bg-white/90 dark:bg-black/90 rounded-full hover:bg-emerald-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-emerald-500/20"

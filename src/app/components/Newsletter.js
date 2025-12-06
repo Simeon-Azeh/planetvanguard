@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
-import { db } from '../../../firebaseConfig';
+import { db } from '@/firebaseConfig';
 import { CheckCircleIcon, XCircleIcon, EnvelopeIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
 export default function Newsletter() {
@@ -26,9 +26,9 @@ export default function Newsletter() {
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {
-        setMessage({ 
-          type: 'error', 
-          text: 'This email is already subscribed!' 
+        setMessage({
+          type: 'error',
+          text: 'This email is already subscribed!'
         });
         return;
       }
@@ -40,16 +40,16 @@ export default function Newsletter() {
         createdAt: new Date().toISOString(),
       });
 
-      setMessage({ 
-        type: 'success', 
-        text: 'Thank you for joining! We\'ll keep you updated.' 
+      setMessage({
+        type: 'success',
+        text: 'Thank you for joining! We\'ll keep you updated.'
       });
       setFormData({ name: '', email: '' });
     } catch (error) {
       console.error('Error:', error);
-      setMessage({ 
-        type: 'error', 
-        text: 'Something went wrong. Please try again later.' 
+      setMessage({
+        type: 'error',
+        text: 'Something went wrong. Please try again later.'
       });
     } finally {
       setIsLoading(false);
@@ -63,7 +63,7 @@ export default function Newsletter() {
         dark:from-emerald-950/30 dark:to-teal-950/30">
         <div className="absolute inset-0 bg-grid-gray-200 dark:bg-grid-gray-700 opacity-[0.2]"></div>
       </div>
-      
+
       <div className="max-w-6xl mx-auto relative">
         <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden">
           <div className="flex flex-col md:flex-row">
@@ -76,17 +76,17 @@ export default function Newsletter() {
                   Join Our Community
                 </span>
               </div>
-              
+
               <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-emerald-600 
                 to-teal-500 bg-clip-text text-transparent">
                 Stay Updated on Our Climate Initiatives
               </h2>
-              
+
               <p className="text-gray-600 dark:text-gray-300 mb-8">
-                Join our newsletter to receive the latest updates on our projects, events, 
+                Join our newsletter to receive the latest updates on our projects, events,
                 and ways you can get involved in creating a sustainable future for Africa.
               </p>
-              
+
               <ul className="space-y-2 mb-8">
                 {['Exclusive event invitations', 'Project updates', 'Volunteer opportunities'].map((item, i) => (
                   <li key={i} className="flex items-center gap-2">
@@ -96,12 +96,12 @@ export default function Newsletter() {
                 ))}
               </ul>
             </div>
-            
+
             {/* Form */}
             <div className="w-full md:w-1/2 bg-gradient-to-br from-emerald-600 to-teal-700 p-8 md:p-12">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <h3 className="text-2xl font-bold text-white mb-6">Subscribe to Our Newsletter</h3>
-                
+
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-white mb-1">
                     Your Name
@@ -117,7 +117,7 @@ export default function Newsletter() {
                     placeholder="John Doe"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-white mb-1">
                     Email Address
@@ -133,7 +133,7 @@ export default function Newsletter() {
                     placeholder="john@example.com"
                   />
                 </div>
-                
+
                 <button
                   type="submit"
                   disabled={isLoading}
@@ -153,13 +153,12 @@ export default function Newsletter() {
                     </>
                   )}
                 </button>
-                
+
                 {message.type && (
-                  <div className={`rounded-lg p-3 flex items-start gap-2 ${
-                    message.type === 'success' 
-                      ? 'bg-green-100 text-green-800' 
+                  <div className={`rounded-lg p-3 flex items-start gap-2 ${message.type === 'success'
+                      ? 'bg-green-100 text-green-800'
                       : 'bg-red-100 text-red-800'
-                  }`}>
+                    }`}>
                     {message.type === 'success' ? (
                       <CheckCircleIcon className="h-5 w-5 shrink-0" />
                     ) : (
@@ -168,7 +167,7 @@ export default function Newsletter() {
                     <p className="text-sm">{message.text}</p>
                   </div>
                 )}
-                
+
                 <p className="text-xs text-white/80 text-center mt-4">
                   We respect your privacy and will never share your information.
                 </p>
@@ -176,7 +175,7 @@ export default function Newsletter() {
             </div>
           </div>
         </div>
-        
+
         {/* Decorative elements */}
         <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-400/20 rounded-full blur-2xl"></div>
         <div className="absolute -top-10 -right-10 w-40 h-40 bg-teal-400/20 rounded-full blur-2xl"></div>

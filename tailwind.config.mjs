@@ -78,12 +78,15 @@ export default {
       },
       backgroundImage: {
         'grid-pattern': "url('/grid-pattern.svg')"
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       }
     }
   },
   plugins: [
     require("tailwindcss-animate"),
-    function({ addUtilities }) {
+    function ({ addUtilities }) {
       addUtilities({
         '.animation-delay-2000': {
           'animation-delay': '2000ms',
