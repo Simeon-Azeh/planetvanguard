@@ -155,14 +155,14 @@ export default function Header() {
               </div>
               <div className="flex flex-col">
                 <span className={`text-lg font-bold tracking-tight transition-colors duration-300 ${scrolled
-                  ? 'text-gray-900 dark:text-white'
-                  : 'text-emerald-800 dark:text-white'
+                  ? ' md:text-gray-900 dark:text-white'
+                  : 'text-emerald-900 md:text-emerald-800 dark:text-white'
                   }`}>
                   Planet Vanguard
                 </span>
                 <span className={`text-xs font-medium transition-colors duration-300 ${scrolled
                   ? 'text-emerald-600 dark:text-emerald-400'
-                  : 'text-emerald-300 dark:text-emerald-400'
+                  : 'text-emerald-900 dark:text-emerald-400'
                   }`}>
                   Protecting Our Future
                 </span>
