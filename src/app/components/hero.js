@@ -135,12 +135,12 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            Non-profit organization working across Africa
+            Empowering African Youth
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
-            Empowering African Youth for
-            <div className="h-16 md:h-20 xl:h-24">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
+            Building a Greener Future for
+            <div className="h-12 md:h-16 lg:h-20">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-blue-600 animate-gradient-x">
                 {" "}{typedText}
                 <span className="animate-pulse text-emerald-600">|</span>
@@ -148,9 +148,8 @@ export default function Hero() {
             </div>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl leading-relaxed">
-            Join us in creating sustainable solutions and building a greener future for Africa and beyond. 
-            Together, we can turn voices into action.
+          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl leading-relaxed">
+            Join us in creating sustainable solutions and turning voices into action across Africa.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
@@ -170,44 +169,44 @@ export default function Hero() {
             </Link>
           </div>
 
-          {/* Enhanced Impact numbers */}
-          <div ref={numbersRef} className="grid grid-cols-3 gap-6 mb-8">
+          {/* Impact numbers */}
+          <div ref={numbersRef} className="grid grid-cols-3 gap-4 mb-8">
             <div className="text-center group">
-              <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4 
+              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 
                 border border-emerald-200/50 dark:border-emerald-700/50
                 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300
                 hover:scale-105">
-                <div className="text-3xl md:text-4xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
+                <div className="text-2xl md:text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
                   {countries}+
                 </div>
-                <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400 font-medium">
+                <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">
                   Countries
                 </div>
               </div>
             </div>
             <div className="text-center group">
-              <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4 
+              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 
                 border border-emerald-200/50 dark:border-emerald-700/50
                 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300
                 hover:scale-105">
-                <div className="text-3xl md:text-4xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
+                <div className="text-2xl md:text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
                   {formatNumber(trees)}
                 </div>
-                <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400 font-medium">
-                  Trees Planted
+                <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">
+                  Trees
                 </div>
               </div>
             </div>
             <div className="text-center group">
-              <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4 
+              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 
                 border border-emerald-200/50 dark:border-emerald-700/50
                 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300
                 hover:scale-105">
-                <div className="text-3xl md:text-4xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
+                <div className="text-2xl md:text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
                   {youth}+
                 </div>
-                <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400 font-medium">
-                  Youth Trained
+                <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">
+                  Youth
                 </div>
               </div>
             </div>
@@ -288,7 +287,7 @@ export default function Hero() {
               ✕
             </button>
             <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
               title="Planet Vanguard Story"
               className="w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

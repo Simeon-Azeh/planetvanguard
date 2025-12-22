@@ -8,7 +8,8 @@ import {
     PhotoIcon,
     EnvelopeIcon,
     ArrowTrendingUpIcon,
-    UserGroupIcon
+    UserGroupIcon,
+    ChatBubbleLeftIcon
 } from '@heroicons/react/24/outline';
 
 export default function Overview() {
@@ -18,7 +19,8 @@ export default function Overview() {
         galleryItems: 0,
         subscribers: 0,
         volunteers: 0,
-        contacts: 0
+        contacts: 0,
+        testimonials: 0
     });
     const [recentActivity, setRecentActivity] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -29,13 +31,14 @@ export default function Overview() {
 
     const fetchDashboardData = async () => {
         try {
-            const [projects, events, gallery, subscribers, volunteers, contacts] = await Promise.all([
+            const [projects, events, gallery, subscribers, volunteers, contacts, testimonials] = await Promise.all([
                 getDocs(collection(db, 'projects')),
                 getDocs(collection(db, 'events')),
                 getDocs(collection(db, 'gallery')),
                 getDocs(collection(db, 'subscriptions')),
                 getDocs(collection(db, 'volunteers')),
-                getDocs(collection(db, 'contacts'))
+                getDocs(collection(db, 'contacts')),
+                getDocs(collection(db, 'testimonials'))
             ]);
 
             setStats({
@@ -44,7 +47,8 @@ export default function Overview() {
                 galleryItems: gallery.size,
                 subscribers: subscribers.size,
                 volunteers: volunteers.size,
-                contacts: contacts.size
+                contacts: contacts.size,
+                testimonials: testimonials.size
             });
 
             // Get recent activity
@@ -89,6 +93,7 @@ export default function Overview() {
         { name: 'Projects', value: stats.projects, icon: FolderIcon, color: 'emerald' },
         { name: 'Events', value: stats.events, icon: CalendarIcon, color: 'blue' },
         { name: 'Gallery Items', value: stats.galleryItems, icon: PhotoIcon, color: 'purple' },
+        { name: 'Testimonials', value: stats.testimonials, icon: ChatBubbleLeftIcon, color: 'teal' },
         { name: 'Subscribers', value: stats.subscribers, icon: EnvelopeIcon, color: 'orange' },
         { name: 'Volunteers', value: stats.volunteers, icon: UserGroupIcon, color: 'pink' },
         { name: 'Contacts', value: stats.contacts, icon: ArrowTrendingUpIcon, color: 'cyan' },

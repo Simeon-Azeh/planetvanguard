@@ -1,17 +1,24 @@
 import React from 'react'
 import Header from '../components/header'
-import Events from '../components/Events'
-import PastEvents from '../components/PastEvents'
+import EventsHero from '../components/EventsHero'
+import UpcomingEvents from '../components/UpcomingEvents'
+import PastEvents from '../components/PastEventsDynamic'
 import Footer from '../components/footer'
+
+export const metadata = {
+  title: 'Events | Planet Vanguard',
+  description: 'Join Planet Vanguard events - workshops, summits, and community initiatives for environmental change across Africa.',
+}
 
 function EventsPage() {
   return (
-    <div>
+    <div className="min-h-screen bg-white dark:bg-gray-950">
       <Header />
-      <Events />
-      <div className="relative z-10">
+      <main className="pt-16">
+        <EventsHero />
+        <UpcomingEvents />
         <PastEvents />
-      </div>
+      </main>
       <Footer />
     </div>
   )

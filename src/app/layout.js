@@ -9,11 +9,11 @@ const inter = Inter({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://planetvanguard.org'),
   title: "Planet Vanguard",
   description: "Voices into Action",
   keywords: "climate change, Africa, sustainability, environmental action, planet vanguard, green initiatives",
   author: "Planet Vanguard",
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   openGraph: {
     title: "Planet Vanguard",
@@ -42,6 +42,8 @@ export const metadata = {
     apple: "/apple-touch-icon.png",
   },
 };
+
+export const viewport = "width=device-width, initial-scale=1";
 
 export default function RootLayout({ children }) {
   return (

@@ -65,7 +65,7 @@ export default function Newsletter() {
       </div>
 
       <div className="max-w-6xl mx-auto relative">
-        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-[0_4px_12px_0_rgba(0,0,0,0.09)]  overflow-hidden">
           <div className="flex flex-col md:flex-row">
             {/* Text content */}
             <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
@@ -113,7 +113,7 @@ export default function Newsletter() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white"
+                    className="w-full px-4 py-3 focus:outline-none rounded-lg border-0 focus:ring-2 focus:ring-white"
                     placeholder="John Doe"
                   />
                 </div>
@@ -129,7 +129,7 @@ export default function Newsletter() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white"
+                    className="w-full px-4 py-3 focus:outline-none rounded-lg border-0 focus:ring-2 focus:ring-white"
                     placeholder="john@example.com"
                   />
                 </div>

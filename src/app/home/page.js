@@ -6,7 +6,9 @@ import Footer from '../components/footer';
 import Header from '../components/header';
 import Hero from '../components/hero';
 import Initiatives from '../components/Initiatives';
-import SuccessStories from '../components/SuccessStories';
+import FeaturedEvents from '../components/FeaturedEvents';
+import FeaturedGallery from '../components/FeaturedGallery';
+import Testimonials from '../components/Testimonials';
 import Newsletter from '../components/Newsletter';
 
 
@@ -22,9 +24,15 @@ export default function HomePage() {
         <Initiatives />
       </AnimateOnScroll>
       <AnimateOnScroll>
-        <SuccessStories />
+        <FeaturedEvents />
       </AnimateOnScroll>
-           <AnimateOnScroll>
+      <AnimateOnScroll>
+        <FeaturedGallery />
+      </AnimateOnScroll>
+      <AnimateOnScroll>
+        <Testimonials />
+      </AnimateOnScroll>
+      <AnimateOnScroll>
         <Newsletter />
       </AnimateOnScroll>
       <AnimateOnScroll>

@@ -269,7 +269,7 @@ export default function ProjectsManager() {
                                     required
                                     value={formData.title}
                                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
+                                    className="w-full px-4 py-2 focus:outline-none border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
                                     placeholder="Enter project title"
                                 />
                             </div>
@@ -283,7 +283,7 @@ export default function ProjectsManager() {
                                     rows={4}
                                     value={formData.description}
                                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
+                                    className="w-full px-4 py-2 focus:outline-none border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
                                     placeholder="Enter project description"
                                 />
                             </div>
@@ -297,7 +297,7 @@ export default function ProjectsManager() {
                                         type="text"
                                         value={formData.category}
                                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
+                                        className="w-full px-4 py-2 focus:outline-none border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
                                         placeholder="e.g., Environment, Education"
                                     />
                                 </div>
@@ -310,7 +310,7 @@ export default function ProjectsManager() {
                                         type="text"
                                         value={formData.location}
                                         onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
+                                        className="w-full px-4 py-2 focus:outline-none border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
                                         placeholder="e.g., Rwanda, Cameroon"
                                     />
                                 </div>
@@ -323,7 +323,7 @@ export default function ProjectsManager() {
                                 <select
                                     value={formData.status}
                                     onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
+                                    className="w-full px-4 py-2 focus:outline-none border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
                                 >
                                     <option value="ongoing">Ongoing</option>
                                     <option value="completed">Completed</option>
@@ -339,7 +339,7 @@ export default function ProjectsManager() {
                                     type="url"
                                     value={formData.image}
                                     onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
+                                    className="w-full px-4 py-2 focus:outline-none border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
                                     placeholder="https://example.com/image.jpg"
                                 />
                             </div>
@@ -359,7 +359,7 @@ export default function ProjectsManager() {
                                                 ...formData,
                                                 impact: { ...formData.impact, beneficiaries: parseInt(e.target.value) || 0 }
                                             })}
-                                            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
+                                            className="w-full px-4 py-2 focus:outline-none border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
                                             placeholder="0"
                                         />
                                     </div>
@@ -375,7 +375,7 @@ export default function ProjectsManager() {
                                                 ...formData,
                                                 impact: { ...formData.impact, duration: e.target.value }
                                             })}
-                                            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
+                                            className="w-full px-4 py-2 focus:outline-none border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
                                             placeholder="6 months"
                                         />
                                     </div>
@@ -391,7 +391,7 @@ export default function ProjectsManager() {
                                                 ...formData,
                                                 impact: { ...formData.impact, budget: e.target.value }
                                             })}
-                                            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
+                                            className="w-full px-4 py-2 focus:outline-none border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:text-white"
                                             placeholder="$10,000"
                                         />
                                     </div>

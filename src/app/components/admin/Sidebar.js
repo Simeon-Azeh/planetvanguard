@@ -6,9 +6,15 @@ import {
     CalendarIcon,
     PhotoIcon,
     EnvelopeIcon,
+    ChatBubbleLeftIcon,
     ArrowLeftOnRectangleIcon,
     Bars3Icon,
-    XMarkIcon
+    XMarkIcon,
+    InformationCircleIcon,
+    TicketIcon,
+    ClipboardDocumentListIcon,
+    DocumentTextIcon,
+    ChatBubbleBottomCenterTextIcon
 } from '@heroicons/react/24/outline';
 import { auth } from '@/firebaseConfig';
 import { useRouter } from 'next/navigation';
@@ -19,9 +25,15 @@ export default function Sidebar({ activeTab, setActiveTab }) {
 
     const menuItems = [
         { id: 'overview', name: 'Overview', icon: HomeIcon },
+        { id: 'about', name: 'About Page', icon: InformationCircleIcon },
         { id: 'projects', name: 'Projects', icon: FolderIcon },
         { id: 'events', name: 'Events', icon: CalendarIcon },
+        { id: 'registrations', name: 'Registrations', icon: TicketIcon },
+        { id: 'submissions', name: 'Submissions', icon: ClipboardDocumentListIcon },
+        { id: 'contact', name: 'Contact', icon: ChatBubbleBottomCenterTextIcon },
+        { id: 'blog', name: 'Blog Posts', icon: DocumentTextIcon },
         { id: 'gallery', name: 'Gallery', icon: PhotoIcon },
+        { id: 'testimonials', name: 'Testimonials', icon: ChatBubbleLeftIcon },
         { id: 'newsletter', name: 'Newsletter', icon: EnvelopeIcon },
     ];
 
@@ -83,8 +95,8 @@ export default function Sidebar({ activeTab, setActiveTab }) {
                                 key={item.id}
                                 onClick={() => handleMenuItemClick(item.id)}
                                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${isActive
-                                        ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400'
-                                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50'
+                                    ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400'
+                                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50'
                                     }`}
                             >
                                 <Icon className="w-5 h-5" />

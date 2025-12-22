@@ -1,17 +1,17 @@
 "use client"
 import Image from 'next/image';
 import Link from 'next/link';
-import { 
-  EnvelopeIcon, 
-  PhoneIcon, 
+import {
+  EnvelopeIcon,
+  PhoneIcon,
   MapPinIcon,
   ArrowRightIcon
 } from '@heroicons/react/24/outline';
-import { 
-  FaInstagram, 
-  FaXTwitter, 
-  FaLinkedin, 
-  FaYoutube 
+import {
+  FaInstagram,
+  FaXTwitter,
+  FaLinkedin,
+  FaYoutube
 } from 'react-icons/fa6';
 
 export default function Footer() {
@@ -23,7 +23,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-b from-emerald-50 to-white dark:from-emerald-950 dark:to-black">
+    <footer className="relative bg-gradient-to-b from-emerald-900 to-emerald-950 dark:from-black dark:to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16">
@@ -31,12 +31,12 @@ export default function Footer() {
           <div className="space-y-6">
             <Link href="/" className="flex items-center space-x-2">
               <Image src="/logo.svg" alt="Logo" width={40} height={40} />
-              <span className="text-xl font-bold text-emerald-800 dark:text-emerald-400">
+              <span className="text-xl font-bold text-white">
                 Planet Vanguard
               </span>
             </Link>
-            <p className="text-gray-600 dark:text-gray-300">
-              Empowering African youth to create sustainable solutions 
+            <p className="text-emerald-100">
+              Empowering African youth to create sustainable solutions
               for a greener tomorrow.
             </p>
             <div className="flex space-x-4">
@@ -46,12 +46,11 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-emerald-100 dark:bg-emerald-900/50 
-                    hover:bg-emerald-200 dark:hover:bg-emerald-800/50 
+                  className="p-2 rounded-full bg-emerald-800/50 hover:bg-emerald-700/50 
                     transform hover:scale-110
                     transition-all duration-300"
                 >
-                  <social.icon className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                  <social.icon className="w-5 h-5 text-emerald-300" />
                 </a>
               ))}
             </div>
@@ -59,7 +58,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-emerald-800 dark:text-emerald-400 mb-6">
+            <h3 className="text-lg font-semibold text-white mb-6">
               Quick Links
             </h3>
             <ul className="space-y-4">
@@ -67,10 +66,13 @@ export default function Footer() {
                 <li key={item}>
                   <Link
                     href={`/${item.toLowerCase()}`}
-                    className="text-gray-600 dark:text-gray-300 hover:text-emerald-600 
-                      dark:hover:text-emerald-400 transition-colors duration-300"
+                    className="group flex items-center gap-2 text-emerald-100 hover:text-white 
+                      transition-all duration-300 hover:translate-x-2"
                   >
-                    {item}
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-emerald-300">
+                      ›
+                    </span>
+                    <span>{item}</span>
                   </Link>
                 </li>
               ))}
@@ -79,7 +81,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold text-emerald-800 dark:text-emerald-400 mb-6">
+            <h3 className="text-lg font-semibold text-white mb-6">
               Contact Us
             </h3>
             <ul className="space-y-4">
@@ -89,8 +91,8 @@ export default function Footer() {
                 { icon: MapPinIcon, text: 'Kigali, Rwanda' }
               ].map((item, index) => (
                 <li key={index} className="flex items-center space-x-3">
-                  <item.icon className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                  <span className="text-gray-600 dark:text-gray-300">{item.text}</span>
+                  <item.icon className="w-5 h-5 text-emerald-300" />
+                  <span className="text-emerald-100">{item.text}</span>
                 </li>
               ))}
             </ul>
@@ -98,25 +100,24 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-lg font-semibold text-emerald-800 dark:text-emerald-400 mb-6">
+            <h3 className="text-lg font-semibold text-white mb-6">
               Newsletter
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            <p className="text-emerald-100 mb-4">
               Subscribe to our newsletter for updates.
             </p>
             <form className="space-y-3">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full px-4 py-2 rounded-lg bg-white dark:bg-black 
-                  border border-emerald-200 dark:border-emerald-800
-                  focus:ring-2 focus:ring-emerald-500 focus:border-transparent
-                  outline-none transition-all duration-300"
+                className="w-full px-4 py-2 rounded-lg bg-emerald-800/30 border border-emerald-700
+                  focus:ring-2 focus:ring-emerald-400 focus:border-transparent
+                  outline-none transition-all duration-300 text-white placeholder-emerald-300"
               />
               <button
                 type="submit"
                 className="w-full flex items-center justify-center gap-2 
-                  bg-emerald-600 hover:bg-emerald-700 text-white 
+                  bg-emerald-600 hover:bg-emerald-500 text-white 
                   px-4 py-2 rounded-lg transition-colors duration-300"
               >
                 Subscribe
@@ -127,8 +128,8 @@ export default function Footer() {
         </div>
 
         {/* Copyright Bar */}
-        <div className="border-t border-emerald-100 dark:border-emerald-900">
-          <div className="py-6 text-center text-gray-600 dark:text-gray-400">
+        <div className="border-t border-emerald-800">
+          <div className="py-6 text-center text-emerald-200">
             © {new Date().getFullYear()} Planet Vanguard. All rights reserved.
           </div>
         </div>

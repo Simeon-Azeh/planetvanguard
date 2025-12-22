@@ -291,50 +291,41 @@ h6 {
   animation: fade-in-up 1s ease-out forwards;
 }
 
-/* Scrollbar Styles */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #10b981;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #059669;
-}
+/* ===== Scrollbar Styling (Light Theme) ===== */
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #10b981 #f1f1f1;
+  scrollbar-color: #059669 #f2f2f2;
 }
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-track {
-    background: #1f2937;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #059669;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #047857;
-  }
-
-  * {
-    scrollbar-color: #059669 #1f2937;
-  }
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5; /* light grey / white */
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #059669,
+    #60e882
+  );
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #FEC107; /* yellow hover */
+}
+
+::-webkit-scrollbar-corner {
+  background: #f5f5f5;
+}
+
 
 .animate-float {
   animation: float 6s ease-in-out infinite;

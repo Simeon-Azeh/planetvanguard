@@ -8,9 +8,15 @@ import Sidebar from '@/app/components/admin/Sidebar';
 import Header from '@/app/components/admin/Header';
 import Overview from '@/app/components/admin/Overview';
 import ProjectsManager from '@/app/components/admin/ProjectsManager';
-import EventsManager from '@/app/components/admin/EventsManager';
+import EventsManager from '@/app/components/admin/EventsManagerUpdated';
 import GalleryManager from '@/app/components/admin/GalleryManager';
+import TestimonialsManager from '@/app/components/admin/TestimonialsManager';
 import NewsletterManager from '@/app/components/admin/NewsletterManager';
+import AboutManager from '@/app/components/admin/AboutManager';
+import RegistrationsManager from '@/app/components/admin/RegistrationsManager';
+import SubmissionsManager from '@/app/components/admin/SubmissionsManager';
+import BlogManager from '@/app/components/admin/BlogManager';
+import ContactManager from '@/app/components/admin/ContactManager';
 
 export default function AdminDashboard() {
   const [user, setUser] = useState(null);
@@ -78,10 +84,16 @@ export default function AdminDashboard() {
 
           <main className="flex-1 overflow-y-auto p-4 lg:p-6">
             {activeTab === 'overview' && <Overview />}
+            {activeTab === 'about' && <AboutManager />}
             {activeTab === 'projects' && <ProjectsManager />}
             {activeTab === 'events' && <EventsManager />}
+            {activeTab === 'registrations' && <RegistrationsManager />}
+            {activeTab === 'submissions' && <SubmissionsManager />}
             {activeTab === 'gallery' && <GalleryManager />}
+            {activeTab === 'testimonials' && <TestimonialsManager />}
             {activeTab === 'newsletter' && <NewsletterManager />}
+            {activeTab === 'blog' && <BlogManager />}
+            {activeTab === 'contact' && <ContactManager />}
           </main>
         </div>
       </div>
