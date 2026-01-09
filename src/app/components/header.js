@@ -47,7 +47,12 @@ export default function Header() {
     {
       name: 'Projects',
       href: '/projects',
-      icon: SparklesIcon,
+      icon: SparklesIcon
+    },
+    {
+      name: 'Explore',
+      href: '#',
+      icon: BookOpenIcon,
       dropdownItems: [
         {
           name: 'Events',
@@ -259,11 +264,11 @@ export default function Header() {
                       {/* Dropdown Footer */}
                       <div className="px-4 py-3 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-100 dark:border-gray-800">
                         <Link
-                          href="/projects"
+                          href="/get-involved"
                           className="flex items-center justify-between text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
                           onClick={() => setActiveDropdown(null)}
                         >
-                          <span>View all projects</span>
+                          <span>Explore all options</span>
                           <ChevronRightIcon className="w-4 h-4" />
                         </Link>
                       </div>
@@ -350,7 +355,7 @@ export default function Header() {
                 <div key={item.name}>
                   {item.dropdownItems ? (
                     <button
-                      onClick={() => setMobileView('projects')}
+                      onClick={() => setMobileView('explore')}
                       className="w-full flex items-center justify-between px-4 py-4 rounded-2xl
                         bg-gray-50 dark:bg-gray-900 hover:bg-emerald-50 dark:hover:bg-emerald-950/50
                         text-gray-900 dark:text-white transition-all duration-300 group"
@@ -410,7 +415,7 @@ export default function Header() {
               </div>
             </div>
           ) : (
-            // Projects Submenu View
+            // Explore Submenu View
             <div className="animate-in slide-in-from-right duration-300">
               <button
                 onClick={() => setMobileView('main')}
@@ -421,11 +426,11 @@ export default function Header() {
               </button>
 
               <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4 px-4">
-                Our Projects
+                Explore
               </h3>
 
               <div className="space-y-2">
-                {navItems.find(item => item.name === 'Projects')?.dropdownItems.map(item => (
+                {navItems.find(item => item.name === 'Explore')?.dropdownItems.map(item => (
                   <Link
                     key={item.name}
                     href={item.href}
